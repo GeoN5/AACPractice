@@ -1,7 +1,8 @@
 package com.example.aacpractice
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import android.view.View
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
 class CounterViewModel : ViewModel() {
 
@@ -11,11 +12,11 @@ class CounterViewModel : ViewModel() {
         counter.value = 0
     }
 
-    fun increase(){
+    fun increase(view: View){
         counter.value = counter.value?.plus(1)
     }
 
-    fun decrease(){
+    fun decrease(view: View){
         counter.value = counter.value?.minus(1)
     }
 
