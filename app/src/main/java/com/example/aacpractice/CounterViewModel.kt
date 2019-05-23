@@ -12,11 +12,11 @@ class CounterViewModel : ViewModel() {
         counter.value = 0
     }
 
-    fun increase(view: View){
+    fun increase(view: View) {
         counter.value = counter.value?.plus(1)
     }
 
-    fun decrease(view: View){
+    fun decrease(view: View) {
         counter.value = counter.value?.minus(1)
     }
 
