@@ -1,5 +1,6 @@
 package com.example.aacpractice
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -15,17 +16,19 @@ class CounterActivity : AppCompatActivity() {
         //뷰모델
         val viewModel = ViewModelProviders.of(this).get(CounterViewModel::class.java)
 
-        binding.countTextView.text = viewModel.counter.toString()
-
         binding.addFab.setOnClickListener {
-            viewModel.counter++
-            binding.countTextView.text = viewModel.counter.toString()
+            viewModel.increase()
         }
 
         binding.subFab.setOnClickListener {
-            viewModel.counter--
-            binding.countTextView.text = viewModel.counter.toString()
+            viewModel.decrease()
         }
+
+        //데이터 변경 관찰
+        viewModel.counter.observe(this, Observer<Int> {
+            //Override onChanged(): Ui 갱신
+            binding.countTextView.text = it.toString()
+        })
 
     }
 }
